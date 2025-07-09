@@ -1,0 +1,803 @@
+:root {
+  --primary-color: #0d6efd;
+  --primary-dark: #084298;
+  --primary-light: #e7f1ff;
+
+  --secondary-color: #6c757d;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --text-color: #495057;
+
+  --section-padding: 60px 0;
+}
+
+/* Base */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #0d6efd;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #0d6efd;
+}
+
+/* Header */
+.main-header {
+  background-color: #0d6efd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.site-title {
+  font-size: 1.5rem;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
+.nav-list li {
+  display: inline-block;
+}
+
+.nav-list a {
+  color: white;
+  font-weight: 500;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+}
+
+/* Mobile Nav */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Initially off-screen to the left */
+    width: 280px; /* Or whatever width you prefer */
+    height: 100vh; /* Full viewport height */
+    background-color: var(--primary-dark); /* Your dark blue for the menu background */
+    color: white;
+    padding-top: 80px; /* Space for fixed header */
+    z-index: 1050; /* Higher than header if header is 1030, lower than modals */
+    transition: left 0.3s ease-out; /* Smooth transition when opening/closing */
+    box-shadow: 2px 0 10px rgba(0,0,0,0.3); /* Subtle shadow */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+.mobile-nav.show-menu {
+    left: 0; /* Slide into view */
+}
+
+.mobile-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8) !important; /* Lighter white for links */
+    padding: 15px 20px;
+    display: block;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mobile-nav .nav-link:hover,
+.mobile-nav .nav-link.active {
+    background-color: var(--primary-color) !important; /* Your primary blue on hover/active */
+    color: white !important;
+}
+
+.mobile-nav li {
+  border-bottom: 1px solid #fff;
+  text-decoration: none;
+}
+
+.mobile-nav a {
+  color: white;
+  display: block;
+  padding: 0.75rem 0;
+  text-decoration: none;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  background: url('images/hero\ image.png') center/cover no-repeat;
+  height: 100vh;
+  padding-top: 5rem;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: 2;
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-image img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid white;
+}
+
+.hero-section h2 {
+  margin-top: 1rem;
+  color: #fff;
+}
+
+.hero-section .btn {
+  font-size: 1rem;
+  padding: 0.5rem 1.25rem;
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+  .nav-list {
+    display: none;
+  }
+
+  .mobile-nav.d-none {
+    display: none !important;
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+}
+
+/* About Section */
+#about {
+  background-color: #fefefe;
+}
+
+#about .section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #0d6efd;
+  margin-bottom: 2rem;
+}
+
+#about .fs-5 {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.7;
+}
+
+#about .fs-5 i {
+  color: #0d6efd;
+}
+
+#about .card {
+  background-color: #ffffff;
+  border-left: 5px solid #0d6efd;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+#about .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 18px rgba(13, 110, 253, 0.2); /* subtle blue glow */
+}
+
+#about ul {
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+
+#about ul li {
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+#about ul li i {
+  margin-right: 0.5rem;
+  color: #0d6efd; /* Updated from green to blue */
+  font-size: 1rem;
+}
+
+/* Experience Section Specific Styling */
+#experience {
+    padding: var(--section-padding); /* Uses the general section padding variable */
+    background-color: var(--light-color) !important; /* Ensures the light background */
+}
+
+#experience .section-title {
+    /* Reuses the styling from About Me section for consistency */
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+    color: var(--dark-color);
+    text-align: center;
+}
+
+#experience .section-title::after {
+    /* Reuses the underline from About Me section for consistency */
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.experience-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* Stronger shadow for depth */
+    transition: all 0.3s ease;
+    margin-bottom: 30px; /* Space between cards */
+}
+
+.experience-card:hover {
+    transform: translateY(-8px); /* Subtle lift on hover */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+}
+
+.experience-card .card-title {
+    font-size: 1.6rem; /* Size for role title (e.g., MEDICAL DIRECTOR) */
+    color: var(--primary-dark) !important; /* Darker primary for headings */
+    text-transform: uppercase; /* Make role titles uppercase */
+}
+
+.experience-card .card-subtitle {
+    font-size: 1.1rem; /* Size for company name */
+    color: var(--secondary-color) !important; /* Muted color for company */
+}
+
+.experience-card .text-nowrap {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--secondary-color) !important; /* Consistent color for dates */
+}
+
+.professional-duties-list {
+    padding-top: 15px; /* Space between card header and list */
+}
+
+.professional-duties-list .list-group-item {
+    font-size: 1.05rem; /* Readable font size for duties */
+    line-height: 1.6;
+    color: var(--text-color);
+    padding: 8px 0; /* Vertical padding for list items */
+    display: flex;
+    align-items: flex-start; /* Align icon with the top of the text */
+}
+
+.professional-duties-list .list-group-item i {
+    font-size: 1rem; /* Size of the bullet icon */
+    color: var(--primary-color) !important; /* Primary color for bullet points */
+    margin-right: 10px; /* Space between icon and text */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    margin-top: 5px; /* Adjust vertical alignment of icon */
+}
+
+/* Responsive adjustments for Experience section */
+@media (max-width: 767.98px) { /* Small devices (phones) */
+    .experience-card {
+        margin-bottom: 20px;
+    }
+    .experience-card .card-body {
+        padding: 20px !important; /* Reduce card padding on mobile */
+    }
+    .experience-card .card-title {
+        font-size: 1.3rem;
+        margin-bottom: 5px !important;
+    }
+    .experience-card .card-subtitle {
+        font-size: 0.95rem;
+    }
+    .experience-card .text-nowrap {
+        font-size: 0.85rem;
+        margin-left: 10px; /* Add some space if date wraps */
+    }
+    .professional-duties-list .list-group-item {
+        font-size: 0.95rem;
+        padding: 6px 0;
+    }
+    .professional-duties-list .list-group-item i {
+        font-size: 0.9rem;
+        margin-right: 8px;
+        margin-top: 4px;
+    }
+}
+
+@media (max-width: 575.98px) { /* Extra small devices (portrait phones) */
+    .experience-card .d-flex {
+        flex-direction: column; /* Stack title and date vertically */
+        align-items: flex-start !important;
+    }
+    .experience-card .text-nowrap {
+        margin-top: 5px;
+        margin-left: 0;
+    }
+}
+
+/* Core Values Section Styling */
+#values {
+    padding: var(--section-padding); /* Use consistent section padding */
+    background-color: white; /* Often good to alternate background for sections */
+}
+
+#values .section-title {
+    /* Reuses consistent section title styling */
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+    color: var(--dark-color);
+    text-align: center;
+}
+
+#values .section-title::after {
+    /* Reuses consistent underline styling */
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+#values .blockquote {
+    font-size: 1.6rem; /* Larger, more impactful quote */
+    font-style: italic;
+    font-weight: 500;
+    color: var(--secondary-color); /* Muted color for the quote */
+    text-align: center;
+    margin: 40px auto 60px auto; /* Centered with vertical spacing */
+    max-width: 800px; /* Limit width for readability */
+    position: relative;
+    padding: 0 20px; /* Some padding for smaller screens */
+}
+
+#values .blockquote::before,
+#values .blockquote::after {
+    font-family: 'Font Awesome 5 Free'; /* Use Font Awesome for quote icons */
+    font-weight: 900;
+    font-size: 3rem;
+    color: var(--primary-light); /* Light blue for subtle quote marks */
+    position: absolute;
+    line-height: 1;
+    opacity: 0.2; /* Make them subtle */
+}
+
+#values .blockquote::before {
+    content: "\f10d"; /* Font Awesome left quote icon */
+    left: 0px;
+    top: -10px;
+}
+
+#values .blockquote::after {
+    content: "\f10e"; /* Font Awesome right quote icon */
+    right: 0px;
+    bottom: -10px;
+}
+
+#values ul {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    display: flex; /* Arrange list items in a row */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    justify-content: center; /* Center items horizontally */
+    gap: 30px; /* Space between list items */
+    margin-top: 20px; /* Space above the list */
+}
+
+#values ul li {
+    background-color: white; /* Card-like background for each value */
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    flex: 1 1 calc(50% - 30px); /* Two items per row, with gap */
+    max-width: 450px; /* Max width for individual value cards */
+    text-align: center; /* Center text within each card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 5px solid var(--primary-color); /* Subtle blue underline */
+}
+
+#values ul li:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+#values ul li strong {
+    font-size: 1.4rem; /* Larger, bolder value title */
+    color: var(--primary-dark); /* Dark blue for the value name */
+    display: block; /* Make it a block for spacing */
+    margin-bottom: 10px;
+}
+
+#values ul li {
+    font-size: 1.05rem; /* Text size for the description */
+    color: var(--text-color);
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) { /* Medium devices (tablets) */
+    #values ul li {
+        flex: 1 1 calc(100% - 30px); /* One item per row on tablets */
+        max-width: 400px; /* Adjust max width */
+    }
+}
+
+@media (max-width: 767.98px) { /* Small devices (phones) */
+    #values .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+    }
+    #values .section-title::after {
+        width: 60px;
+    }
+    #values .blockquote {
+        font-size: 1.3rem;
+        margin: 30px auto 40px auto;
+        padding: 0 15px;
+    }
+    #values .blockquote::before,
+    #values .blockquote::after {
+        font-size: 2.5rem;
+    }
+    #values ul {
+        gap: 20px;
+    }
+    #values ul li {
+        padding: 25px;
+        flex: 1 1 100%; /* Ensure full width on small phones */
+    }
+    #values ul li strong {
+        font-size: 1.2rem;
+    }
+    #values ul li {
+        font-size: 0.95rem;
+    }
+}
+
+/* Contact Section Styling */
+#contact {
+    padding: var(--section-padding);
+    background-color: var(--light-color) !important;
+}
+
+#contact .section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+    color: var(--dark-color);
+    text-align: center;
+}
+
+#contact .section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+#contact .lead {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 40px;
+}
+
+#contact .contact-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.5rem;
+}
+
+#contact .contact-card i {
+    color: var(--primary-color) !important;
+    margin-bottom: 15px;
+}
+
+#contact .contact-card h5 {
+    font-size: 1.4rem;
+    color: var(--primary-dark);
+}
+
+#contact .contact-card p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+#contact .contact-card p.text-muted {
+    font-size: 0.9rem;
+    color: var(--secondary-color) !important;
+}
+
+/* Link Wrapper for clickable cards */
+#contact .card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+#contact .card-link .contact-card {
+    border: 2px solid transparent;
+}
+
+#contact .card-link:hover .contact-card {
+    border-color: var(--primary-color);
+    background-color: var(--primary-light) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+#contact .card-link:hover .contact-card i {
+    color: var(--primary-color) !important;
+}
+
+#contact .card-link:hover .contact-card h5 {
+    color: var(--primary-color) !important;
+}
+
+#contact .card-link:hover .contact-card p {
+    color: var(--text-color) !important;
+}
+
+/* Social Media Icons - Corrected to show brand colors */
+#contact .social-icons {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#contact .social-icons h5 {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 25px;
+}
+
+#contact .social-icon-link {
+    display: inline-flex;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: transparent !important;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin: 0 10px;
+    border: 2px solid var(--primary-light);
+}
+
+/* Individual social icon colors */
+#contact .social-icon-link.facebook i {
+    color: #1877F2 !important; /* Facebook blue */
+}
+
+#contact .social-icon-link.twitter i {
+    color: #1DA1F2 !important; /* Twitter blue */
+}
+
+#contact .social-icon-link.linkedin i {
+    color: #0077B5 !important; /* LinkedIn blue */
+}
+
+#contact .social-icon-link.instagram i {
+    color: #E4405F !important; /* Instagram pink */
+}
+
+#contact .social-icon-link.whatsapp i {
+    color: #25D366 !important; /* WhatsApp green */
+}
+
+#contact .social-icon-link:hover {
+    background-color: var(--primary-light) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#contact .social-icon-link i {
+    font-size: 2.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    #contact .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+    }
+    
+    #contact .section-title::after {
+        width: 60px;
+    }
+    
+    #contact .lead {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    #contact .contact-card {
+        padding: 25px;
+    }
+    
+    #contact .contact-card i {
+        font-size: 2.5rem;
+    }
+    
+    #contact .contact-card h5 {
+        font-size: 1.2rem;
+    }
+    
+    #contact .contact-card p {
+        font-size: 0.9rem;
+    }
+    
+    #contact .social-icons {
+        margin-top: 30px;
+    }
+    
+    #contact .social-icons h5 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+    
+    #contact .social-icon-link {
+        width: 50px;
+        height: 50px;
+        margin: 0 8px;
+    }
+    
+    #contact .social-icon-link i {
+        font-size: 1.8rem;
+    }
+}
+
+/* Footer Section Styling */
+#main-footer {
+    background-color: var(--primary-dark); /* Dark blue background for the footer */
+    color: white; /* White text by default */
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
+
+#main-footer .footer-heading {
+    font-size: 1.5rem;
+    color: var(--primary-light); /* Lighter blue for headings */
+    margin-bottom: 25px;
+}
+
+#main-footer .footer-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white for body text */
+}
+
+/* Footer Social Icons */
+.social-icons-footer .footer-social-icon {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--primary-color); /* Primary blue background */
+    color: white !important;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icons-footer .footer-social-icon:hover {
+    background-color: var(--accent-color); /* Accent color on hover for contrast */
+    transform: translateY(-3px);
+}
+
+/* Footer Navigation Links */
+.footer-nav-list li {
+    margin-bottom: 10px;
+}
+
+.footer-nav-list .footer-link,
+.footer-contact-list .footer-link {
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    display: flex; /* For icon alignment */
+    align-items: center;
+}
+
+.footer-nav-list .footer-link:hover,
+.footer-contact-list .footer-link:hover {
+    color: var(--primary-light); /* Lighter blue on hover */
+    text-decoration: underline; /* Underline on hover for clarity */
+}
+
+/* Footer Contact List Icons */
+.footer-contact-list li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex; /* For icon alignment */
+    align-items: flex-start;
+}
+
+.footer-contact-list .footer-icon {
+    color: var(--primary-light) !important; /* Lighter blue for contact icons */
+    margin-right: 10px;
+    font-size: 1.1rem;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.footer-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white divider */
+}
+
+.footer-copyright {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6); /* Even lighter for copyright */
+    padding-top: 10px;
+}
+
+/* Responsive Adjustments for Footer */
+@media (max-width: 767.98px) {
+    #main-footer .text-md-start {
+        text-align: center !important; /* Center columns on mobile */
+    }
+    #main-footer .mb-4.mb-md-0 {
+        margin-bottom: 30px !important; /* Adjust spacing between columns */
+    }
+    #main-footer .footer-heading {
+        margin-bottom: 15px;
+    }
+    .footer-nav-list,
+    .footer-contact-list {
+        padding-left: 0; /* Remove padding for centered lists */
+    }
+    .footer-nav-list li,
+    .footer-contact-list li {
+        justify-content: center; /* Center list items horizontally */
+    }
+}
